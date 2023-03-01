@@ -8,7 +8,7 @@ Postgres:
 
 AccountName: "amber1"
 
-Seed: "ee823a72698fd05c70fbdf36ba2ea467d33cf628c94ef030383efcb39581e43f"
+Seed: ""
 
 NftPrefix: "tencent"
 

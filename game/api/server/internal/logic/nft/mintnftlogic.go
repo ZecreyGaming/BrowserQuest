@@ -61,6 +61,11 @@ func (l *MintNftLogic) MintNft(req *types.ReqMintNft) (*types.RespMintNft, error
 		return nil, errors.New(fmt.Sprintf("6 err=%v", err))
 	}
 	resp.Id = nftInfo.Asset.Id
+	player.NftId = nftInfo.Asset.Id
+	err = l.svcCtx.Db.Player.Update(player)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("3 err=%v", err))
+	}
 	return resp, nil
 }
 

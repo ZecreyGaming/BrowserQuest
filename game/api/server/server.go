@@ -12,7 +12,8 @@ import (
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "/Users/zhangwei/work/zecrey_treasure_hunt/game/api/server/etc/server-api.yaml", "the config file")
+var configFile = flag.String("f",
+	"/etc/config/config.yaml", "the config file")
 
 func main() {
 	flag.Parse()
