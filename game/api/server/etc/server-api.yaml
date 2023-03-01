@@ -1,0 +1,15 @@
+Name: server-api
+Host: 0.0.0.0
+Port: 5566
+
+
+Postgres:
+  DataSource: host=127.0.0.1 user=root password=public dbname=zecrey_treasureHunt port=5434 sslmode=disable
+
+AccountName: "amber1"
+
+Seed: "ee823a72698fd05c70fbdf36ba2ea467d33cf628c94ef030383efcb39581e43f"
+
+NftPrefix: "tencent"
+
+CollectionId: 6

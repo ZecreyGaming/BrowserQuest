@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info(
+	author: "zecrey game"
+	date: "2023-3-1"
+	desc: "server API"
+)
+
+/* ========================= Nft =========================*/
+type (
+	ReqMintNft {
+		RawMessage    string `form:"raw_message"`
+		SignedMessage string `form:"signed_message"`
+		AccountName   string `form:"account_name"`
+		MediaId       string `form:"media_id"`
+	}
+	RespMintNft {
+		Id int64 `json:"id"`
+	}
+)
+
+@server(
+	group: nft
+)
+service server-api {
+	@handler mintNft
+	post /api/v1/asset/mintNft (ReqMintNft) returns (RespMintNft)
+	
+}
