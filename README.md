@@ -10,7 +10,12 @@ First, Create a database locally use this code
   docker-compose -f docker-compose.yaml up -d
 ```
 
-Second,run 'Makefile' command 'make Server'
+Second,run 'Makefile' command 
+
+```bash
+make Server
+```
+
 
 Then,run this project:
 ```bash
