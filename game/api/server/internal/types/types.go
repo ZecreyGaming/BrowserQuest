@@ -6,8 +6,18 @@ type ReqMintNft struct {
 	SignedMessage string `form:"signed_message"`
 	AccountName   string `form:"account_name"`
 	MediaId       string `form:"media_id"`
+	BoxId         int64  `form:"box_id"`
+	BoxName       string `form:"box_name"` //Sword of Valour-Defender 1 2 3 4
 }
 
 type RespMintNft struct {
 	Id int64 `json:"id"`
+}
+
+type ReqGetGameInfo struct {
+	AccountName string `form:"account_name"`
+}
+
+type RespGetGameInfo struct {
+	GameData string `json:"game_data"`
 }

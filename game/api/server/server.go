@@ -13,7 +13,7 @@ import (
 )
 
 var configFile = flag.String("f",
-	"/etc/config/config.yaml", "the config file")
+	"./etc/config.yaml", "the config file")
 
 func main() {
 	flag.Parse()
