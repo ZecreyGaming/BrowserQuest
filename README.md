@@ -13,7 +13,7 @@ First, Create a database locally use this code
 Second,run 'Makefile' command 
 
 ```bash
-make Server
+  make Server
 ```
 
 
