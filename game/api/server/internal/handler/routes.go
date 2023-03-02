@@ -18,11 +18,6 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/api/v1/asset/mintNft",
 				Handler: nft.MintNftHandler(serverCtx),
 			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/api/v1/asset/getGameInfo",
-				Handler: nft.GetGameInfoHandler(serverCtx),
-			},
 		},
 	)
 }

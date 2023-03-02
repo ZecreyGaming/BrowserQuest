@@ -13,11 +13,3 @@ type ReqMintNft struct {
 type RespMintNft struct {
 	Id int64 `json:"id"`
 }
-
-type ReqGetGameInfo struct {
-	AccountName string `form:"account_name"`
-}
-
-type RespGetGameInfo struct {
-	GameData string `json:"game_data"`
-}

@@ -7,11 +7,7 @@ import (
 
 type Config struct {
 	rest.RestConf
-	Postgres struct {
-		DataSource string
-	}
 	LogConf      logx.LogConf
-	AccountName  string
 	Seed         string
 	NftPrefix    string
 	CollectionId int64

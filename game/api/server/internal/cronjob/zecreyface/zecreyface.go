@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	zecreyface "github.com/Zecrey-Labs/zecrey-marketplace-go-sdk/sdk"
+	legendSdk "github.com/zecrey-labs/zecrey-legend-go-sdk/sdk"
 	"time"
 )
 
@@ -35,21 +36,30 @@ func GetClient(accountName, seed, nftPrefix string, collectionId int64) (*Client
 		nftPrefix:    nftPrefix}, nil
 }
 
-func (c *Client) MintNft(collectionId int64, MediaId string, toAccountName string, nftName string, propertie, nftDescription string) (*zecreyface.RespCreateAsset, error) {
+func (c *Client) MintNft(collectionId int64, MediaId string, toAccountName string, nftName string, boxName string, boxId int64, nftDescription string) (*zecreyface.RespCreateAsset, error) {
 	assetStats := zecreyface.Stat{
 		Name:     "time",
 		Value:    time.Now().UnixMilli(),
 		MaxValue: 0,
 	}
+	assetLevel := zecreyface.Level{
+		Name:     "boxId",
+		Value:    boxId,
+		MaxValue: 0,
+	}
 	assetProperty := zecreyface.Propertie{
-		Name:  "name",
-		Value: propertie,
+		Name:  "boxName",
+		Value: boxName,
 	}
 	// get content hash
 
 	_Stats := []zecreyface.Stat{assetStats}
 	_Property := []zecreyface.Propertie{assetProperty}
-
+	_Level := []zecreyface.Level{assetLevel}
+	_LevelByte, err := json.Marshal(_Level)
+	if err != nil {
+		return nil, err
+	}
 	_StatsByte, err := json.Marshal(_Stats)
 	if err != nil {
 		return nil, err
@@ -61,7 +71,7 @@ func (c *Client) MintNft(collectionId int64, MediaId string, toAccountName strin
 	nftInfo, err := c.z.MintNft(collectionId, toAccountName,
 		fmt.Sprintf("https://res.cloudinary.com/zecrey/image/upload/%s", MediaId), nftName,
 		nftDescription, MediaId,
-		string(_PropertyByte), "[]", string(_StatsByte))
+		string(_PropertyByte), string(_LevelByte), string(_StatsByte))
 	if err != nil {
 		return nil, err
 	}
@@ -96,4 +106,8 @@ func (c *Client) GetCollectionWinNfts(collectionId int64) ([]*zecreyface.HauaraN
 
 func GetAccountInfo(accountName string) (*zecreyface.RespGetAccountByAccountName, error) {
 	return zecreyface.GetAccountByAccountName(accountName)
+}
+
+func GetAccountInfoBySeed(seed string) (*legendSdk.RespGetAccountInfoByPubKey, error) {
+	return zecreyface.GetAccountInfoBySeed(seed)
 }

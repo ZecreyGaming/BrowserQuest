@@ -20,22 +20,12 @@ type (
 		Id int64 `json:"id"`
 	}
 )
-type (
-	ReqGetGameInfo {
-		AccountName string `form:"account_name"`
-	}
-	RespGetGameInfo {
-		GameData string `json:"game_data"`
-	}
-)
+
 @server(
 	group: nft
 )
 service server-api {
 	@handler mintNft
 	post /api/v1/asset/mintNft (ReqMintNft) returns (RespMintNft)
-	
-	@handler getGameInfo
-	get /api/v1/asset/getGameInfo (ReqGetGameInfo) returns (RespGetGameInfo)
 	
 }

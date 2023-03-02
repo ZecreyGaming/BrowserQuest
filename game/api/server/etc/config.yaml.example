@@ -1,0 +1,10 @@
+Name: server-api
+Host: 0.0.0.0
+Port: 5566
+
+
+Seed: ""
+
+NftPrefix: "treasureHunt"
+
+CollectionId: 8
