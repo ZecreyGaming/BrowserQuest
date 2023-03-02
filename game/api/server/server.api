@@ -13,17 +13,29 @@ type (
 		SignedMessage string `form:"signed_message"`
 		AccountName   string `form:"account_name"`
 		MediaId       string `form:"media_id"`
+		BoxId         int64  `form:"box_id"`
+		BoxName       string `form:"box_name"` //Sword of Valour-Defender 1 2 3 4
 	}
 	RespMintNft {
 		Id int64 `json:"id"`
 	}
 )
-
+type (
+	ReqGetGameInfo {
+		AccountName string `form:"account_name"`
+	}
+	RespGetGameInfo {
+		GameData string `json:"game_data"`
+	}
+)
 @server(
 	group: nft
 )
 service server-api {
 	@handler mintNft
 	post /api/v1/asset/mintNft (ReqMintNft) returns (RespMintNft)
+	
+	@handler getGameInfo
+	get /api/v1/asset/getGameInfo (ReqGetGameInfo) returns (RespGetGameInfo)
 	
 }

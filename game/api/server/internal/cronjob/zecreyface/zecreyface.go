@@ -1,8 +1,10 @@
 package zecreyface
 
 import (
+	"encoding/json"
 	"fmt"
 	zecreyface "github.com/Zecrey-Labs/zecrey-marketplace-go-sdk/sdk"
+	"time"
 )
 
 type Client struct {
@@ -33,11 +35,33 @@ func GetClient(accountName, seed, nftPrefix string, collectionId int64) (*Client
 		nftPrefix:    nftPrefix}, nil
 }
 
-func (c *Client) MintNft(collectionId int64, MediaId string, toAccountName string, nftName string, nftDescription string) (*zecreyface.RespCreateAsset, error) {
+func (c *Client) MintNft(collectionId int64, MediaId string, toAccountName string, nftName string, propertie, nftDescription string) (*zecreyface.RespCreateAsset, error) {
+	assetStats := zecreyface.Stat{
+		Name:     "time",
+		Value:    time.Now().UnixMilli(),
+		MaxValue: 0,
+	}
+	assetProperty := zecreyface.Propertie{
+		Name:  "name",
+		Value: propertie,
+	}
+	// get content hash
+
+	_Stats := []zecreyface.Stat{assetStats}
+	_Property := []zecreyface.Propertie{assetProperty}
+
+	_StatsByte, err := json.Marshal(_Stats)
+	if err != nil {
+		return nil, err
+	}
+	_PropertyByte, err := json.Marshal(_Property)
+	if err != nil {
+		return nil, err
+	}
 	nftInfo, err := c.z.MintNft(collectionId, toAccountName,
 		fmt.Sprintf("https://res.cloudinary.com/zecrey/image/upload/%s", MediaId), nftName,
 		nftDescription, MediaId,
-		"[]", "[]", "[]")
+		string(_PropertyByte), "[]", string(_StatsByte))
 	if err != nil {
 		return nil, err
 	}

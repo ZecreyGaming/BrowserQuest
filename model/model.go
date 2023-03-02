@@ -10,7 +10,7 @@ type Player struct {
 	AccountIndex int64  `gorm:"index" json:"account_index"`
 	AccountName  string `json:"account_name" gorm:"index;not null;size:128"`
 	L2publicKey  string `json:"l2public_key"`
-	NftId        int64  `json:"nft_id"`
+	Data         string `json:"game_data"`
 }
 
 type Game struct {
