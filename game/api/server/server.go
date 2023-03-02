@@ -13,7 +13,7 @@ import (
 )
 
 var configFile = flag.String("f",
-	"/Users/zhangwei/work/zecrey_treasure_hunt/game/api/server/etc/config.yaml", "the config file")
+	"./etc/config.yaml", "the config file")
 
 func main() {
 	flag.Parse()
