@@ -28,8 +28,8 @@ func NewGetGameInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *GetGa
 func (l *GetGameInfoLogic) GetGameInfo(req *types.ReqGetGameInfo) (*types.RespGetGameInfo, error) {
 	resp := &types.RespGetGameInfo{}
 	player, err := l.svcCtx.Db.Player.Get(req.AccountName)
-	if !errors.Is(err, gorm.ErrRecordNotFound) {
-		return resp, err
+	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, err
 	}
 	resp.GameData = player.Data
 	if errors.Is(err, gorm.ErrRecordNotFound) {
