@@ -1,4 +1,4 @@
-# Zecrey Browser Quest
+# Zecrey Browser Quest Server
 
 This is a sample treasure hunt game that uses zecrey's sdk in the background
 
