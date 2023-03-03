@@ -5,6 +5,6 @@ Port: 5566
 
 Seed: ""
 
-NftPrefix: "BrowserQuest"
+NftPrefix: "treasureHunt"
 
 CollectionId: 8
