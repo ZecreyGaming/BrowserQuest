@@ -3,7 +3,7 @@ module github.com/ZecreyGaming/zecrey_treasure_hunt
 go 1.17
 
 require (
-	github.com/Zecrey-Labs/zecrey-marketplace-go-sdk v1.0.12
+	github.com/Zecrey-Labs/zecrey-marketplace-go-sdk v1.0.13
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869
 	github.com/zecrey-labs/zecrey-crypto v1.0.36
 	github.com/zecrey-labs/zecrey-legend-go-sdk v0.0.23

@@ -15,11 +15,11 @@ type ServiceContext struct {
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
-	AccountInfo, err := sdk.GetAccountInfoBySeed(c.Seed)
+	AccountInfo, seed, err := sdk.GetAccountInfoBySeed(c.Seed)
 	if err != nil {
 		panic(err)
 	}
-	sdkClient, err := sdk.GetClient(strings.TrimSuffix(AccountInfo.AccountName, ".zec"), c.Seed, NftPrefix, c.CollectionId)
+	sdkClient, err := sdk.GetClient(strings.TrimSuffix(AccountInfo.AccountName, ".zec"), seed, NftPrefix, c.CollectionId)
 	if err != nil {
 		panic(err)
 	}
