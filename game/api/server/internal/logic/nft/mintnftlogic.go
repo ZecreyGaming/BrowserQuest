@@ -31,22 +31,22 @@ func (l *MintNftLogic) MintNft(req *types.ReqMintNft) (*types.RespMintNft, error
 	resp := &types.RespMintNft{}
 	player, err := l.getFromMarket(req.AccountName)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("2 err=%v", err))
+		return nil, errors.New(fmt.Sprintf("getFromMarket err=%v", err))
 	}
 	ok, err := sdk.VerifyMessage(player.Account.AccountPk, req.SignedMessage, req.RawMessage)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("4 err=%v", err))
+		return nil, errors.New(fmt.Sprintf("VerifyMessage err=%v", err))
 	}
 	if !ok {
-		return nil, errors.New(fmt.Sprintf("5 err=%v", err))
+		return nil, errors.New(fmt.Sprintf("VerifyMessage fail err=%v", err))
 	}
 	nftInfo, err := l.svcCtx.SdkClient.MintNft(l.svcCtx.Config.CollectionId, req.MediaId, player.Account.AccountName,
-		fmt.Sprintf("%s-%s", l.svcCtx.Config.NftPrefix, req.BoxName),
+		fmt.Sprintf("%s-%s", l.svcCtx.Config.NftPrefix, req.BoxName), //nftName
 		req.BoxName, req.BoxId,
-		fmt.Sprintf("%s-%s%d", l.svcCtx.Config.NftPrefix, req.BoxName, req.BoxId))
+		fmt.Sprintf("%s-%s%d", l.svcCtx.Config.NftPrefix, req.BoxName, req.BoxId)) //nftDescription
 	if err != nil {
 		logx.Error("MintNft", zap.Error(err))
-		return nil, errors.New(fmt.Sprintf("6 err=%v", err))
+		return nil, errors.New(fmt.Sprintf("MintNft err=%v", err))
 	}
 	resp.Id = nftInfo.Asset.Id
 	return resp, nil
@@ -58,7 +58,7 @@ func (l *MintNftLogic) getFromMarket(playerName string) (*zecreyface.RespGetAcco
 	//set playerPk
 	playerInfo, err := sdk.GetAccountInfo(name)
 	if err != nil {
-		return nil, errors.New(fmt.Sprintf("7 err=%v", err))
+		return nil, errors.New(fmt.Sprintf("GetAccountInfo err=%v", err))
 	}
 	return playerInfo, nil
 }
