@@ -42,7 +42,7 @@ Example result:
 Then,run the development server:
 
 ```bash
-  docker run -d -p 5566:5566 -v $(pwd)/config.yaml:/app/etc/config.yaml zecrey/browser-quest:0.0.3  
+  docker run -d -p 5566:5566 -v $(pwd)/config.yaml:/app/etc/config.yaml zecrey/browser-quest:0.0.4  
 ```
 
 If your docker download image is stuck,
