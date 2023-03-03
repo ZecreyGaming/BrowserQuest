@@ -5,6 +5,23 @@ info(
 	date: "2023-3-1"
 	desc: "server API"
 )
+/* root path */
+type (
+	ReqGetStatus {
+	}
+	RespGetStatus {
+		Status        uint32 `json:"status"`
+		NetworkId     uint32 `json:"network_id"`
+		ServerVersion string `json:"server_version"`
+	}
+)
+@server(
+	group: root
+)
+service server-api {
+	@handler GetStatus
+	get / (ReqGetStatus) returns (RespGetStatus)
+}
 
 /* ========================= Nft =========================*/
 type (
@@ -27,5 +44,4 @@ type (
 service server-api {
 	@handler mintNft
 	post /api/v1/asset/mintNft (ReqMintNft) returns (RespMintNft)
-	
 }
