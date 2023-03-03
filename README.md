@@ -35,3 +35,4 @@ Then,run the development server:
   #Starting server at 0.0.0.0:5566...
 ```
 
+If your docker download image is stuck, please [configure Docker image source](https://mirrors.ustc.edu.cn/help/dockerhub.html#linux)
