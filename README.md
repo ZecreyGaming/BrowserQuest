@@ -28,7 +28,6 @@ You can replace `amber1.zec` in example with your name for query.
 Example:
 ```bash
    curl --location 'https://hasura.zecrey.com/v1/graphql' \
-   --header 'x-hasura-access-key: ' \
    --header 'Content-Type: application/json' \
    --data '{"query":"query MyQuery {\n  collection(where: {account: {account_name: {_eq: \"amber1.zec\"}}, l2_collection_id: {_eq: \"0\"}}) {\n    id\n  }\n}","variables":{}}'
      
