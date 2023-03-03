@@ -22,6 +22,8 @@ func main() {
 	conf.MustLoad(*configFile, &c)
 
 	server := rest.MustNewServer(c.RestConf)
+	opt := rest.WithCors("*")
+	opt(server)
 	defer server.Stop()
 
 	ctx := svc.NewServiceContext(c)
