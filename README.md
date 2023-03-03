@@ -10,7 +10,7 @@ If you do not have docker installed, [install docker](https://dockerdocs.cn/desk
 Clone the repo and create the `config.yaml` file
 
 ```bash
-  cd ./game/api/server/etc/
+  cd BrowserQuest/game/api/server/etc/
   
   cp config.yaml.example config.yaml
 ```
@@ -28,7 +28,7 @@ Modify the `config.yaml` file to configure your information
 
 Then,run the development server:
 ```bash
-  cd ./game/api/server/etc/
+  cd BrowserQuest/game/api/server/etc/
   
   docker run -d -p 5566:5566 -v $(pwd)/config.yaml:/app/etc/config.yaml zecrey/browser-quest:0.0.1
   
