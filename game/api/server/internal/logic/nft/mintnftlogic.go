@@ -13,6 +13,8 @@ import (
 	"strings"
 )
 
+const NftPrefix = "treasureHunt"
+
 type MintNftLogic struct {
 	logx.Logger
 	ctx    context.Context
@@ -41,9 +43,9 @@ func (l *MintNftLogic) MintNft(req *types.ReqMintNft) (*types.RespMintNft, error
 		return nil, errors.New(fmt.Sprintf("VerifyMessage fail err=%v", err))
 	}
 	nftInfo, err := l.svcCtx.SdkClient.MintNft(l.svcCtx.Config.CollectionId, req.MediaId, player.Account.AccountName,
-		fmt.Sprintf("%s-%s", l.svcCtx.Config.NftPrefix, req.BoxName), //nftName
+		fmt.Sprintf("%s-%s", NftPrefix, req.BoxName), //nftName
 		req.BoxName, req.BoxId,
-		fmt.Sprintf("%s-%s%d", l.svcCtx.Config.NftPrefix, req.BoxName, req.BoxId)) //nftDescription
+		fmt.Sprintf("%s-%s%d", NftPrefix, req.BoxName, req.BoxId)) //nftDescription
 	if err != nil {
 		logx.Error("MintNft", zap.Error(err))
 		return nil, errors.New(fmt.Sprintf("MintNft err=%v", err))

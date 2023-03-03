@@ -108,6 +108,10 @@ func GetAccountInfo(accountName string) (*zecreyface.RespGetAccountByAccountName
 	return zecreyface.GetAccountByAccountName(accountName)
 }
 
-func GetAccountInfoBySeed(seed string) (*legendSdk.RespGetAccountInfoByPubKey, error) {
-	return zecreyface.GetAccountInfoBySeed(seed)
+func GetAccountInfoBySeed(privateKey string) (*legendSdk.RespGetAccountInfoByPubKey, error) {
+	_, seed, err := zecreyface.GetSeedAndL2Pk(privateKey)
+	if err != nil {
+		return nil, fmt.Errorf("GetSeedAndL2Pk err=%s", err.Error())
+	}
+	return zecreyface.GetAccountInfoBySeed(seed[2:])
 }

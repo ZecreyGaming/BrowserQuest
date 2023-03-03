@@ -5,6 +5,4 @@ Port: 5566
 
 Seed: ""
 
-NftPrefix: "treasureHunt"
-
 CollectionId: 8

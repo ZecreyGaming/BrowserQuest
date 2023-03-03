@@ -7,6 +7,8 @@ import (
 	"strings"
 )
 
+const NftPrefix = "treasureHunt"
+
 type ServiceContext struct {
 	Config    config.Config
 	SdkClient *sdk.Client
@@ -17,7 +19,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	if err != nil {
 		panic(err)
 	}
-	sdkClient, err := sdk.GetClient(strings.TrimSuffix(AccountInfo.AccountName, ".zec"), c.Seed, c.NftPrefix, c.CollectionId)
+	sdkClient, err := sdk.GetClient(strings.TrimSuffix(AccountInfo.AccountName, ".zec"), c.Seed, NftPrefix, c.CollectionId)
 	if err != nil {
 		panic(err)
 	}

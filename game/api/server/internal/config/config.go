@@ -9,6 +9,5 @@ type Config struct {
 	rest.RestConf
 	LogConf      logx.LogConf
 	Seed         string
-	NftPrefix    string
 	CollectionId int64
 }
