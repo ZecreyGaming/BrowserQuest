@@ -3,9 +3,8 @@ module github.com/ZecreyGaming/zecrey_treasure_hunt
 go 1.17
 
 require (
-	github.com/Zecrey-Labs/zecrey-marketplace-go-sdk v1.0.13
+	github.com/Zecrey-Labs/zecrey-marketplace-go-sdk v1.0.14
 	github.com/bmizerany/assert v0.0.0-20160611221934-b7ed37b82869
-	github.com/zecrey-labs/zecrey-crypto v1.0.36
 	github.com/zecrey-labs/zecrey-legend-go-sdk v0.0.23
 	github.com/zeromicro/go-zero v1.3.3
 	go.uber.org/zap v1.21.0
@@ -53,6 +52,7 @@ require (
 	github.com/tklauser/go-sysconf v0.3.5 // indirect
 	github.com/tklauser/numcpus v0.2.2 // indirect
 	github.com/x448/float16 v0.8.4 // indirect
+	github.com/zecrey-labs/zecrey-crypto v1.0.36 // indirect
 	github.com/zecrey-labs/zecrey-eth-rpc v0.0.16-0.20220901141132-9dc73c6ca518 // indirect
 	github.com/zecrey-labs/zecrey-legend v1.0.20 // indirect
 	go.opentelemetry.io/otel v1.7.0 // indirect
